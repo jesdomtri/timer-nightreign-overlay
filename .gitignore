@@ -1,0 +1,36 @@
+# PyInstaller
+build/
+dist/
+*.spec
+
+# Byte‐compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+*.egg
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Tests
+.cache
+.pytest_cache/
+
+# IDEs / editores
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Spec file
+*.spec
