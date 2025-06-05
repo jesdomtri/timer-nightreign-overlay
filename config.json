@@ -19,6 +19,7 @@
     "start": "ctrl+shift+u",
     "pause": "ctrl+shift+i",
     "reset": "ctrl+shift+o",
-    "exit": "ctrl+shift+c"
+    "exit": "ctrl+shift+c",
+    "toggle": "ctrl+shift+p"
   }
 }

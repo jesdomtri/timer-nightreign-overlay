@@ -189,6 +189,13 @@ class OverlayTimer(QtWidgets.QWidget):
         self.elapsed_seconds = 0
         self._refresh_display()
 
+    def toggle_visibility(self):
+        """Oculta o muestra la ventana."""
+        if self.isVisible():
+            self.hide()
+        else:
+            self.show()
+
     def closeEvent(self, event):
         """Al cerrar la ventana, desregistrar hotkeys y parar timers."""
         self.timer.stop()
@@ -211,6 +218,7 @@ def register_hotkeys(window: OverlayTimer):
     pause_hotkey = hotkeys.get("pause", "ctrl+shift+i")
     reset_hotkey = hotkeys.get("reset", "ctrl+shift+o")
     exit_hotkey  = hotkeys.get("exit",  "ctrl+shift+c")
+    toggle_hotkey = hotkeys.get("toggle", "ctrl+shift+p")
 
     keyboard.add_hotkey(start_hotkey, lambda: window.sig_start.emit())
     keyboard.add_hotkey(pause_hotkey, lambda: window.sig_pause.emit())
@@ -219,6 +227,7 @@ def register_hotkeys(window: OverlayTimer):
         exit_hotkey,
         lambda: (window.close(), os._exit(0))
     )
+    keyboard.add_hotkey(toggle_hotkey, lambda: window.toggle_visibility())
 
     # Mantener este hilo vivo mientras la app esté abierta
     keyboard.wait()
