@@ -1,0 +1,18 @@
+{
+  "blink_times": [270, 660],
+  "font": {
+    "family": "Arial",
+    "size": 36
+  },
+  "colors": {
+    "text": "#FFFFFF",
+    "background": "rgba(0, 0, 0, 0.5)",
+    "blink_text": "#000000",
+    "blink_background": "#FFFFFF"
+  },
+  "opacity": 0.5,
+  "position": {
+    "horizontal": "center",
+    "vertical": 0
+  }
+}
