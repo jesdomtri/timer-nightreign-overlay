@@ -202,21 +202,21 @@ class OverlayTimer(QtWidgets.QWidget):
 
 def register_hotkeys(window: OverlayTimer):
     """
-    Registra hotkeys globales con 'keyboard'. Al presionar,
-    emite la señal correspondiente (ejecutada en el hilo de Qt).
+    Registra hotkeys globales desde config.json.
     """
-    # Ctrl + Shift + U  → Iniciar / Reanudar
-    keyboard.add_hotkey('ctrl+shift+u', lambda: window.sig_start.emit())
-    # Ctrl + Shift + I  → Pausar
-    keyboard.add_hotkey('ctrl+shift+i', lambda: window.sig_pause.emit())
-    # Ctrl + Shift + O  → Reiniciar
-    keyboard.add_hotkey('ctrl+shift+o', lambda: window.sig_reset.emit())
-    
-    # Ctrl + Shift + C → Cerrar _y_ terminar el proceso
-    # Llamamos primero a window.close() para que dispare closeEvent,
-    # y acto seguido a os._exit(0) para matar todo el intérprete.
+    hotkeys = window.config.get("hotkeys", {})
+
+    # Atajos con valores por defecto
+    start_hotkey = hotkeys.get("start", "ctrl+shift+u")
+    pause_hotkey = hotkeys.get("pause", "ctrl+shift+i")
+    reset_hotkey = hotkeys.get("reset", "ctrl+shift+o")
+    exit_hotkey  = hotkeys.get("exit",  "ctrl+shift+c")
+
+    keyboard.add_hotkey(start_hotkey, lambda: window.sig_start.emit())
+    keyboard.add_hotkey(pause_hotkey, lambda: window.sig_pause.emit())
+    keyboard.add_hotkey(reset_hotkey, lambda: window.sig_reset.emit())
     keyboard.add_hotkey(
-        'ctrl+shift+c',
+        exit_hotkey,
         lambda: (window.close(), os._exit(0))
     )
 

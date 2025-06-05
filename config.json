@@ -14,5 +14,11 @@
   "position": {
     "horizontal": "center",
     "vertical": 0
+  },
+  "hotkeys": {
+    "start": "ctrl+shift+u",
+    "pause": "ctrl+shift+i",
+    "reset": "ctrl+shift+o",
+    "exit": "ctrl+shift+c"
   }
 }
